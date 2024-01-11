@@ -38,6 +38,11 @@ jobs:
       - name: Install Anypoint CLI
         run: npm install -g anypoint-cli-v4
 
+       # Automation using Any CLI
+      - name: Automation using Any CLI (show account info)
+        run: anypoint-cli-v4 account:user:describe --client_id b7fd6752467c4f8cb5bd13a5c4a06b19 --client_secret a2b4aEb65EEC479bB4DF2a1a6D179b99 -o json
+
+        
       - name: Integration Testing ( Install BAT CLI)
         run: curl -o- 'https://s3.amazonaws.com/bat-wrapper/install.sh' | bash && echo Integration Testing Complete
         
@@ -48,4 +53,5 @@ jobs:
         if: ${{ false }}
         uses: grafana/k6-action@v0.2.0
         with:
-          filename: ./src/test/resources/performance/test.js  
+          filename: ./src/test/resources/performance/test.js
+  
